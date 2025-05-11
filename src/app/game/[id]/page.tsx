@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Container } from "@/components/container";
 import { GameProps } from "@/types/games";
 import { Card } from "flowbite-react";
@@ -37,11 +38,8 @@ async function getSortedGame(): Promise<GameProps | undefined> {
   }
 }
 
-export default async function Game({
-  params: { id },
-}: {
-  params: { id: string };
-}) {
+export default async function Game({ params }: any) {
+  const { id } = params;
   const game = await getGameById(id);
   const sortedGame = await getSortedGame();
 

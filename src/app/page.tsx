@@ -1,18 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Container } from "@/components/container";
 import { InputText } from "@/components/input-text";
 import { GameList, GameProps } from "@/types/games";
 import { Card } from "flowbite-react";
-import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { BiRightArrowCircle } from "react-icons/bi";
 import { BsArrowRightSquare } from "react-icons/bs";
-
-type PropsParams = {
-  params: {
-    id: string;
-  };
-};
 
 async function getDailyGames(): Promise<GameProps | undefined> {
   try {
@@ -39,9 +33,7 @@ async function getGamesData(): Promise<GameList | undefined> {
   }
 }
 
-export async function generateMetadata({
-  params,
-}: PropsParams): Promise<Metadata> {
+export async function generateMetadata({ params }: any) {
   try {
     const res: GameProps = await fetch(
       `${process.env.NEXT_API_URL}/next-api/?api=game&id=${params?.id}`,

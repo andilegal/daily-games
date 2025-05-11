@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Container } from "@/components/container";
 import { InputText } from "@/components/input-text";
 import { GameList } from "@/types/games";
@@ -23,11 +24,7 @@ async function getGameByTitle(title: string): Promise<GameList | undefined> {
   }
 }
 
-export default async function Search({
-  params,
-}: {
-  params: { title: string };
-}) {
+export default async function Search({ params }: any) {
   const title = params?.title;
   const games = await getGameByTitle(title);
 
